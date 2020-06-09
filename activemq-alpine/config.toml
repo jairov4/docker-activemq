@@ -1,0 +1,33 @@
+log_level = "debug"
+retries = 0
+
+[default_backends]
+[default_backends.env]
+    onetime  = true
+    keys = ["/activemq"]
+
+[[resource]]
+  name = "service"
+
+  [resource.exec]
+    command = "/opt/activemq/bin/activemq console"
+
+  [[resource.template]]
+    src = "/etc/remco/activemq.xml"
+    dst = "/opt/activemq/conf/activemq.xml"
+    mode = "0644"
+
+  [[resource.template]]
+    src = "/etc/remco/jetty-realm.properties"
+    dst = "/opt/activemq/conf/jetty-realm.properties"
+    mode = "0644"
+
+  [[resource.template]]
+    src = "/etc/remco/log4j.properties"
+    dst = "/opt/activemq/conf/log4j.properties"
+    mode = "0644"
+
+  [[resource.template]]
+    src = "/etc/remco/logging.properties"
+    dst = "/opt/activemq/conf/logging.properties"
+    mode = "0644"
