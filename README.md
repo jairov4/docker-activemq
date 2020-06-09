@@ -30,9 +30,6 @@ version: '3.6'
 services:
   mq:
     image: jairov4/activemq:5.14.5-alpine
-    build:
-      context: activemq
-      dockerfile: Dockerfile
     environment:
       ACTIVEMQ_USERS_ADMIN_ROLE: the_admin
       ACTIVEMQ_USERS_ADMIN_PASSWORD: the_password
